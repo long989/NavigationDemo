@@ -1,0 +1,17 @@
+plugins {
+    id 'java-library'
+    id 'kotlin'
+}
+
+dependencies {
+    api 'com.alibaba:fastjson:1.2.78'
+    // https://mvnrepository.com/artifact/com.google.auto.service/auto-service
+    api 'com.google.auto.service:auto-service:1.0'
+    implementation project(path: ':nav-annotation')
+    annotationProcessor 'com.google.auto.service:auto-service:1.0'
+
+}
+java {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+}
