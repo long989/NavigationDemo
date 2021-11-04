@@ -24,5 +24,5 @@ public @interface Destination {
      *
      * @return
      */
-    boolean isStarter() default false;
+    boolean asStarter() default false;
 }

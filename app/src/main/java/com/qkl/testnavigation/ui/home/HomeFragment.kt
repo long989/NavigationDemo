@@ -1,6 +1,7 @@
 package com.qkl.testnavigation.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +12,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.qkl.nav_annotation.Destination
 import com.qkl.testnavigation.R
 import com.qkl.testnavigation.databinding.FragmentHomeBinding
-@Destination(pageUrl = "main/tabs/home",isStarter = true)
+
+@Destination(pageUrl = "main/tabs/home", asStarter = true)
 class HomeFragment : Fragment() {
+    companion object {
+        const val TAG = "HomeFragment"
+    }
 
     private lateinit var homeViewModel: HomeViewModel
     private var _binding: FragmentHomeBinding? = null
@@ -36,7 +41,13 @@ class HomeFragment : Fragment() {
         homeViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+        Log.e(TAG, "onCreateView")
         return root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        Log.e(TAG, "onResume")
     }
 
     override fun onDestroyView() {

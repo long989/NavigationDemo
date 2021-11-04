@@ -1,6 +1,7 @@
 package com.qkl.testnavigation.ui.dashboard
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,8 +12,13 @@ import androidx.lifecycle.ViewModelProvider
 import com.qkl.nav_annotation.Destination
 import com.qkl.testnavigation.R
 import com.qkl.testnavigation.databinding.FragmentDashboardBinding
-@Destination(pageUrl = "main/tabs/dashboard",isStarter = false)
+import com.qkl.testnavigation.ui.notifications.NotificationsFragment
+
+@Destination(pageUrl = "main/tabs/dashboard", asStarter = false)
 class DashboardFragment : Fragment() {
+    companion object {
+        const val TAG = "DashboardFragment"
+    }
 
     private lateinit var dashboardViewModel: DashboardViewModel
     private var _binding: FragmentDashboardBinding? = null
@@ -36,8 +42,15 @@ class DashboardFragment : Fragment() {
         dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+        Log.e(TAG, "onCreateView")
         return root
     }
+
+    override fun onResume() {
+        super.onResume()
+        Log.e(TAG, "onResume")
+    }
+
 
     override fun onDestroyView() {
         super.onDestroyView()

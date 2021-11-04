@@ -111,7 +111,7 @@ public class NavProcessor extends AbstractProcessor {
             //获取注解
             Destination annotation = typeElement.getAnnotation(destinationClass);
             String pageUrl = annotation.pageUrl();
-            boolean asStarter = annotation.isStarter();
+            boolean asStarter = annotation.asStarter();
             int id = Math.abs(clazzName.hashCode());
             //Activity,Dialog,Fragment
             String destType = getDestinationType(typeElement);
